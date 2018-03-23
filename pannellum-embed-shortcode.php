@@ -13,7 +13,6 @@ License: GPL
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 // Create the shortcode
-add_shortcode( 'pannellum', 'pannellum_embed_shortcode' );
 function pannellum_embed_shortcode( $atts )
 {
     $atts = shortcode_atts( array(
@@ -45,8 +44,16 @@ function pannellum_embed_shortcode( $atts )
     if( ! empty( $src ) ) {
         $return_string = "<iframe width=\"{$width}\" height=\"{$height}\" allowfullscreen style=\"border-style:none;\" src=\"{$player}?panorama={$src}\"></iframe>";
     } else {
-        $return_string = 'Pannellum - Nothing to display, please check your src URL.';
+        $return_string = 'Pannellum - Nothing to display, please check your src url.';
     }
 
     return $return_string;
 }
+
+
+function pannellum_embed_shortcode_init()
+{
+    add_shortcode( 'pannellum', 'pannellum_embed_shortcode' );
+}
+
+add_action( 'init', 'pannellum_embed_shortcode_init' );
