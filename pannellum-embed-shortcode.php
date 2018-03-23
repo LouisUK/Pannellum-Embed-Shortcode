@@ -15,6 +15,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 // Create the shortcode
 function pannellum_embed_shortcode( $atts )
 {
+    // normalize attribute keys, lowercase
+    $atts = array_change_key_case( (array)$atts, CASE_LOWER );
+
     $atts = shortcode_atts( array(
         'width'     => 600,
         'height'    => 400,
