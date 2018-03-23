@@ -23,6 +23,8 @@ function pannellum_embed_shortcode( $atts )
         'height'    => 400,
         'src'       => '',
         'preview'   => '',
+        'title'   => '',
+        'author'   => '',
         'player'    => plugins_url('/pannellum/src/standalone/pannellum.htm', __FILE__),
         'autoload'  => false,
     ), $atts );
@@ -33,6 +35,8 @@ function pannellum_embed_shortcode( $atts )
     $preview    = esc_url( $atts["preview"] );
     $player     = esc_url( $atts["player"] );
     $src        = esc_url( $atts["src"] );
+    $title      = sanitize_text_field( $atts["title"] );
+    $author     = sanitize_text_field( $atts["author"] );
 
     // Add preview image before playing
     if( ! empty( $preview ) ) {
@@ -41,7 +45,17 @@ function pannellum_embed_shortcode( $atts )
 
     // Auto start player on load
     if( $autoload ) {
-        $src .= '&amp;autoLoad=true"';
+        $src .= '&amp;autoLoad=true';
+    }
+
+    // Panorama title
+    if ( $title ) {
+        $src .= '&amp;title=' . rawurlencode( $title );
+    }
+
+    // Panorama author
+    if ( $author ) {
+        $src .= '&amp;author=' . rawurlencode( $author );
     }
 
     if( ! empty( $src ) ) {
