@@ -25,7 +25,7 @@ function pannellum_embed_shortcode( $atts )
         'preview'   => '',
         'title'   => '',
         'author'   => '',
-        'player'    => plugins_url('/pannellum/src/standalone/pannellum.htm', __FILE__),
+        'player'    => plugins_url('/pannellum/pannellum.htm', __FILE__),
         'autoload'  => false,
     ), $atts );
 
