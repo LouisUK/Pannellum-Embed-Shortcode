@@ -16,7 +16,7 @@ A simple WordPress shortcode that embeds the open source panorama viewer, Pannel
 `[pannellum src="https://pannellum.org/images/cerro-toco-0.jpg"  autoload=true]`
 
 ### Install
-Clone repo and run `git submodule update --init` to pull in Pannellum
+Download and extract to your WordPress plugins directory
 
 ## Todo
 - Move away from standalone viewer and use Pannellum's API
