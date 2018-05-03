@@ -23,8 +23,8 @@ function pannellum_embed_shortcode( $atts )
         'height'    => 400,
         'src'       => '',
         'preview'   => '',
-        'title'   => '',
-        'author'   => '',
+        'title'     => '',
+        'author'    => '',
         'player'    => plugins_url('/pannellum/pannellum.htm', __FILE__),
         'autoload'  => false,
     ), $atts );
