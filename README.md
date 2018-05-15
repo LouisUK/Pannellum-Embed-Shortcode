@@ -20,7 +20,6 @@ Download and extract to your WordPress plugins directory
 
 ## Todo
 - Move away from standalone viewer and use Pannellum's API
-- Add title and author support
 
 ## Source
 Pannellum - https://pannellum.org/
