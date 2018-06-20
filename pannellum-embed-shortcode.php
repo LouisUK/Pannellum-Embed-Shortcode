@@ -4,7 +4,7 @@
 Plugin Name: Pannellum Embed Shortcode
 Plugin URI: https://github.com/LouisUK/Pannellum-Embed-Shortcode
 Description: WordPress shortcode to embed 360 images using Pannellum.
-Version: 1.0
+Version: 1.2
 Author: Louis Barber
 Author URI: https://github.com/louisuk
 License: GPL
@@ -29,14 +29,14 @@ function pannellum_embed_shortcode( $atts )
         'autoload'  => false,
     ), $atts );
 
-    $autoload   = filter_var( $atts["autoload"], FILTER_VALIDATE_BOOLEAN );
-    $width      = filter_var( $atts["width"], FILTER_VALIDATE_INT );
-    $height     = filter_var( $atts["height"], FILTER_VALIDATE_INT );
-    $preview    = esc_url( $atts["preview"] );
-    $player     = esc_url( $atts["player"] );
-    $src        = esc_url( $atts["src"] );
-    $title      = sanitize_text_field( $atts["title"] );
-    $author     = sanitize_text_field( $atts["author"] );
+    $autoload   = filter_var( $atts["autoload"], FILTER_VALIDATE_BOOLEAN ); // Autoload source image
+    $width      = filter_var( $atts["width"], FILTER_VALIDATE_INT ); // Fixed player width
+    $height     = filter_var( $atts["height"], FILTER_VALIDATE_INT ); // Fixed player height
+    $preview    = esc_url( $atts["preview"] ); // Preview image source
+    $player     = esc_url( $atts["player"] ); // Player URL source
+    $src        = esc_url( $atts["src"] ); // 360 image source
+    $title      = rawurlencode( $atts["title"] ); // Title attribute
+    $author     = rawurlencode( $atts["author"] ); // Author attribute
 
     // Add preview image before playing
     if( ! empty( $preview ) ) {
@@ -50,12 +50,12 @@ function pannellum_embed_shortcode( $atts )
 
     // Panorama title
     if ( $title ) {
-        $src .= '&amp;title=' . rawurlencode( $title );
+        $src .= '&amp;title=' . $title;
     }
 
     // Panorama author
     if ( $author ) {
-        $src .= '&amp;author=' . rawurlencode( $author );
+        $src .= '&amp;author=' . $author;
     }
 
     if( ! empty( $src ) ) {
